@@ -2,44 +2,31 @@ import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
-
 import './styles.css';
 
-
-
-
 const TaskForm = ({ onSubmit }) => {
-
-
-    
-
-
 
     const [date, setDate] = useState(getDateWithFormat());
     const [time, setTime] = useState(getTimeWithFormat());
     const [task, setTask] = useState('');
 
-
     function getDateWithFormat() {
-
         const today = new Date();
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-
-        //return `${day}-${month}-${year}`;
+        const day = String(today.getDate()).padStart(2, '0');        
         return `${year}-${month}-${day}`;
     }
     
 
     function customFormatDate(date){
-
-        //2023-12-02
+        
         const [y, m, d] = date.split('-');
         
         return `${d}/${m}/${y}`;
 
     }
+
     function getTimeWithFormat() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
@@ -65,16 +52,9 @@ const TaskForm = ({ onSubmit }) => {
         setTask('');
 
     }
-
     
-
-
-
     return (
-        <>
-           
-
-
+        <>     
             <form onSubmit={handleSubmit} className="agregar pt-3">
                 <div className='d-flex align-items-center justify-content-center gap-3'>
                     <div className='form-group'>
@@ -105,11 +85,6 @@ const TaskForm = ({ onSubmit }) => {
                     <Button type='submit' variant="success" >Crear tarea</Button>
                 </div>
             </form>
-
-
-
-
-
         </>
     )
 }

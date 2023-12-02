@@ -10,14 +10,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
 function App() {
-
 
   const [showMessage, setShowMessage] = useState(false);
   const toggleShowMessage = () => setShowMessage(!showMessage);
-
-
 
   const [listaDeTareas, setListaDeTareas] = useState(() => {
     try {
@@ -28,8 +24,6 @@ function App() {
       return [];
     }
   });
-
-
 
   useEffect(() => {
     try {
@@ -46,7 +40,7 @@ function App() {
       toggleShowMessage();
       return;
     }
-    
+
 
     setListaDeTareas([...listaDeTareas, task])
   }
@@ -87,19 +81,14 @@ function App() {
             <TaskForm onSubmit={(newTask) => addTask(newTask)} />
           </div>
 
-          
           <TaskList listaDeTareas={listaDeTareas} setListaDeTareas={setListaDeTareas} />
 
         </div>
-
-
-
-
       </div>
       <div className='nueva d-flex align-items-center justify-content-evenly gap-2'>
         {/* <TaskForm setListaDeTareas={setListaDeTareas} /> */}
         <div>
-          &copy; <em>{ new Date().getFullYear() }</em> | Desarrollado por German Quercia & German Espindola
+          &copy; <em>{new Date().getFullYear()}</em> | Desarrollado por German Quercia & German Espindola
         </div>
 
         <img width={150} src='https://campus.argentinaprograma.utn.edu.ar/pluginfile.php/1/core_admin/logocompact/300x300/1699313935/AP_UTN_Compacto_00.png' alt='Logo Argetina Programa'></img>
