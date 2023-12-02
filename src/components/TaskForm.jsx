@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+
+
 import './styles.css';
 
 
@@ -28,7 +30,16 @@ const TaskForm = ({ onSubmit }) => {
         //return `${day}-${month}-${year}`;
         return `${year}-${month}-${day}`;
     }
+    
 
+    function customFormatDate(date){
+
+        //2023-12-02
+        const [y, m, d] = date.split('-');
+        
+        return `${d}/${m}/${y}`;
+
+    }
     function getTimeWithFormat() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
@@ -42,13 +53,9 @@ const TaskForm = ({ onSubmit }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if ((task) === '') {
-            
-        }
-
         onSubmit({
             id: crypto.randomUUID(),
-            date,
+            date: customFormatDate(date),
             time,
             task,
             isCompleted: false
@@ -58,6 +65,8 @@ const TaskForm = ({ onSubmit }) => {
         setTask('');
 
     }
+
+    
 
 
 
@@ -72,7 +81,7 @@ const TaskForm = ({ onSubmit }) => {
                         <input
                             className='form-control'
                             type="date"
-                            onChange={(ev => setDate(ev.target.value))}
+                            onChange={(ev) => setDate(ev.target.value)}
                             value={date}
                         />
                     </div>
